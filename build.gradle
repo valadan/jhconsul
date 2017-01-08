@@ -208,6 +208,16 @@ task wrapper(type: Wrapper) {
 task stage(dependsOn: 'bootRepackage') {
 }
 
+task changeOtherVersion {
+  doLast {
+    Properties props = new Properties()
+    props.load(new FileInputStream("gradle.properties"))
+    project.file('build/release.info').write(props.version, 'UTF-8')
+  }
+}
+
+createReleaseTag.dependsOn changeOtherVersion
+
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
 bootBuildInfo.mustRunAfter cleanResources
