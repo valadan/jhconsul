@@ -214,7 +214,6 @@ task changeOtherVersion {
     props.load(new FileInputStream("gradle.properties"))
     String jenkinsProps = 'projectVersion=' + props.version + '\n'
     jenkinsProps += 'projectName=' + project.name + '\n'
-    jenkinsProps += 'archiveName=' + project.archiveName
     project.file('build/jenkins.properties').text = jenkinsProps
   }
 }
