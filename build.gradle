@@ -219,6 +219,7 @@ task changeOtherVersion {
 }
 
 createReleaseTag.dependsOn changeOtherVersion
+build.dependsOn changeOtherVersion
 
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
